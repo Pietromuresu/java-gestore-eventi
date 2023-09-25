@@ -58,10 +58,14 @@ public class ProgramEvents {
 		return eventsInDate;
 	}
 	
+	
 	public int numOfEvents() {
 		
-		return this.events.size();
+		return (int)events.stream().count();
+		
+		// return this.events.size(); No Lambda
 	}
+	
 	
 	public String chronoOrderedEvents() {
 		

@@ -159,10 +159,19 @@ public class Main {
 		
 		
 		System.out.println(program.findEventsByDate("2023-12-02"));
+		
+		System.out.println("\nEventi in ordine cronologico:");
 		System.out.println(program.chronoOrderedEvents());
+		System.out.println("\nNumero di eventi programmati: " + program.numOfEvents());
 
+		
+		System.out.println("\n------------------------Dopo l'eliminazione------------------------");
 		program.deleteProgram();
 		System.out.println(program.getEvents());
+		System.out.println("\nNumero di eventi programmati: " + program.numOfEvents());
+		
+		
+		sc.close();
 	}
 	
 }
