@@ -1,6 +1,7 @@
 package org.java.eventHandler;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -135,14 +136,20 @@ public class Main {
 	
 		List<Event> events = new ArrayList<>();
 		
-		Event event1 = new Event("Pietro", "2023-12-01", 01);
-		Event event2 = new Event("Pietro", "2023-12-03", 01);
-		Event event3 = new Event("Pietro", "2023-12-02", 01);
+		Show event1 = new Show("Bedrolla musical", "2023-12-01", 01, BigDecimal.valueOf(1000));
+		Concert event2 = new Concert("Singing Pietrolla", "2023-12-03", 01, "22:00", BigDecimal.valueOf(100));
+		Concert event6 = new Concert("Singing Pietrolla", "2023-12-03", 01, "22:00", BigDecimal.valueOf(140.22));
+		Concert event4 = new Concert("Singing Pietrolla", "2023-12-03", 01, "22:00", BigDecimal.valueOf(80.53));
+		Concert event5 = new Concert("Singing Pietrolla", "2023-12-03", 01, "22:00", BigDecimal.valueOf(29.94));
+		Show event3 = new Show("Pietro's Show", "2023-12-02", 01, BigDecimal.valueOf(190.45));
 		
 		
 		events.add(event1);
 		events.add(event2);
 		events.add(event3);
+		events.add(event4);
+		events.add(event5);
+		events.add(event6);
 		
 		System.out.println(events);
 		
@@ -163,7 +170,13 @@ public class Main {
 		System.out.println("\nEventi in ordine cronologico:");
 		System.out.println(program.chronoOrderedEvents());
 		System.out.println("\nNumero di eventi programmati: " + program.numOfEvents());
-
+		
+		
+		System.out.println("\n------------------------Medie Prezzi------------------------");
+		System.out.println("Avg tot: " + program.avgEventsPrice());
+		System.out.println("Avg Shows: " +program.avgShowPrice());
+		System.out.println("Avg Concerts: " +program.avgConcertPrice());
+		
 		
 		System.out.println("\n------------------------Dopo l'eliminazione------------------------");
 		program.deleteProgram();

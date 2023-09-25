@@ -1,11 +1,13 @@
 package org.java.eventHandler;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public class Event {
+public abstract class Event {
 	
 	private String title;
 	private LocalDate date;
@@ -19,7 +21,7 @@ public class Event {
 		setReservedSeats(0);
 	}
 	
-	
+	public abstract BigDecimal getPrice();
 	
 	
 	// Getters and setters 
@@ -92,6 +94,16 @@ public class Event {
 	public int remainingSeats() {
 		
 		return this.numSeats - this.reservedSeats;
+	}
+	
+	
+	public String formatPrice() {
+	
+		
+		DecimalFormat formatter = new DecimalFormat("#,##0.00");
+		String formattedPrice = formatter.format(this.getPrice());
+		
+		return formattedPrice;
 	}
 	
 	@Override
