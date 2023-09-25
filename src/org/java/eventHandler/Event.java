@@ -42,7 +42,6 @@ public class Event {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");	
 		LocalDate typedDate = LocalDate.parse(date, formatter);
 		
-        String formattedDate = typedDate.format(formatter);
 		
 		if(typedDate.isBefore(now))
 			throw new Exception("La data inserita non è valida : Data già passata");
