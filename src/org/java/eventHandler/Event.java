@@ -76,7 +76,7 @@ public class Event {
 	
 	// Prenota se ci sono posti disponibili e se l'evento deve ancora iniziare 
 	public void prenota() throws Exception {
-		if(reservedSeats == numSeats || !date.isAfter(LocalDate.now()))
+		if(this.remainingSeats() == 0 || !date.isAfter(LocalDate.now()))
 			throw new Exception("Impossibile prenotare un posto per questo evento");
 		
 		this.reservedSeats += 1;
@@ -88,6 +88,11 @@ public class Event {
 			throw new Exception("Impossibile disdire la prenotazione");
 		
 		this.reservedSeats -= 1;
+	}
+	
+	public int remainingSeats() {
+		
+		return this.numSeats - this.reservedSeats;
 	}
 	
 	@Override
