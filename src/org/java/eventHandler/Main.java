@@ -1,12 +1,13 @@
 package org.java.eventHandler;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		
-	
+	// -------------------MILSTONE 1---------------------
 //	Event mioEvento = new Event("Pietro", "2023-09-26", 100);
 //	
 //		System.out.println(mioEvento);
@@ -28,10 +29,11 @@ public class Main {
 //		System.out.println(mioEvento.getReservedSeats());
 		
 		
-	
+		// -------------------MILSTONE 2 - 3---------------------
 		Scanner sc = new Scanner(System.in);
 		
-		Event newEvent = null;
+//		Event newEvent = null;
+		Concert newConcert = null;
 		
 		
 		System.out.println("-------------Inserisci un nuovo evento------------");
@@ -59,16 +61,25 @@ public class Main {
 		System.out.println("Anno (yyyy): ");
 		int year = sc.nextInt();
 		
+		System.out.println("Ora (HH): ");
+		int hour = sc.nextInt();
+		
+		System.out.println("Minuti (mm): ");
+		int minutes = sc.nextInt();
+		
+		System.out.println("Quanto costa il biglietto(Usa la virgola ',' come separatore ): ");
+		BigDecimal price = sc.nextBigDecimal();
+		
 		
 		String date = "" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
-		
+		String time = "" + hour + ":" + minutes;
 		
 		// Posti disponibili
 		System.out.println("Posti Disponibili: ");
 		int numSeats = sc.nextInt();
 		try {
 		
-			newEvent = new Event(title, date, numSeats);
+			newConcert = new Concert(title, date, numSeats, time, price);
 		}catch(Exception e) {
 			
 			System.err.println(e.getMessage());
@@ -84,7 +95,7 @@ public class Main {
 		for(int i = 0; i < numReservations; i++) {
 			try {
 				
-				newEvent.prenota();
+				newConcert.prenota();
 				System.out.println("Prenotazione "  + (i + 1) + " avvenuta con successo");
 			}catch(Exception e) {
 			
@@ -92,8 +103,8 @@ public class Main {
 			}
 		}
 		
-		System.out.println("Prenotazioni: "+ newEvent.getReservedSeats());
-		System.out.println("Posti disponibili: "+ newEvent.remainingSeats());
+		System.out.println("Prenotazioni: "+ newConcert.getReservedSeats());
+		System.out.println("Posti disponibili: "+ newConcert.remainingSeats());
 		
 		
 		// Chiedo quanti posti disdire e stampo le cancellazioni avvenute e quelle non conformi ai controlli 
@@ -104,7 +115,7 @@ public class Main {
 		for(int i = 0; i < numCanceling; i++) {
 			try {
 				
-				newEvent.disdici();
+				newConcert.disdici();
 				System.out.println("Cancellazione " + (i + 1) + " avvenuta con successo");
 			}catch(Exception e) {
 			
@@ -113,9 +124,10 @@ public class Main {
 		}
 		
 		
-		System.out.println("------------------------------------");
-		System.out.println("Prenotazioni: "+ newEvent.getReservedSeats());
-		System.out.println("Posti disponibili: "+ newEvent.remainingSeats());
+		System.out.println("------------------------------------");		
+		System.out.println("Concerto: "+ newConcert);
+		System.out.println("Prenotazioni: "+ newConcert.getReservedSeats());
+		System.out.println("Posti disponibili: "+ newConcert.remainingSeats());
 		System.out.println("------------------------------------");
 		
 	
